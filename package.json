@@ -1,0 +1,19 @@
+{
+  "name": "jl224dq-examination-3",
+  "version": "1.0.0",
+  "description": "Examination 3",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1dv023/jl224dq-examination-3.git"
+  },
+  "author": "Jonathan Lahti",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1dv023/jl224dq-examination-3/issues"
+  },
+  "homepage": "https://github.com/1dv023/jl224dq-examination-3#readme"
+}
