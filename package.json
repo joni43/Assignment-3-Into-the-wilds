@@ -4,7 +4,8 @@
   "description": "Examination 3",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,17 @@
   "bugs": {
     "url": "https://github.com/1dv023/jl224dq-examination-3/issues"
   },
-  "homepage": "https://github.com/1dv023/jl224dq-examination-3#readme"
+  "homepage": "https://github.com/1dv023/jl224dq-examination-3#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "githubhook": "^1.9.3",
+    "node": "^9.8.0",
+    "node-fetch": "^2.1.1",
+    "octonode": "^0.9.2",
+    "path": "^0.12.7",
+    "secure-compare": "^3.0.1"
+  }
 }
