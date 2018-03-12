@@ -13,8 +13,19 @@ var compare = require('secure-compare')
 
 const port = process.env.PORT || 8000
 const app = express()
-
 var client = github.client(dotenv)
+
+
+// --------------------------- Start APP 2000---------------------------------------
+// Set Port
+let server = app.listen(process.env.PORT || 8000, function () {
+  console.log('Connected! Well done...')
+})
+let io = require('socket.io')(server)
+
+io.on('connection', function (socket) {
+  console.log('a user connected')
+})
 // req all js file
 const githubAPI = require('./routes/github')
 // view engine
@@ -38,27 +49,31 @@ app.get('/', (req, res) => {
   res.send('Start page')
 })
 app.get('/github', (req, res, next) => {
+  res.send('github')
+})
+app.post('/github', (req, res, next) => {
+  console.log('request: \n' + req)
+  // Take the post data from GIthub
   let postGitHub = JSON.stringify(req.body)
 
-  let signature = req.headers['X-Hub-Signature']
+   // Get the header
+  let signature = req.headers['x-hub-signature']
 
   let hmac = crypto.createHmac('sha1', 'jontetomte12')
   hmac.update(postGitHub)
   let hasedSecret = 'sha1' + hmac.digest('hex')
 
-  console.log(signature)
-  console.log(hasedSecret)
+  console.log('A', signature)
+  console.log('B', hasedSecret)
 
   if (compare(signature, hasedSecret)) {
     console.log('Data came from GitHub')
   }
   res.sendStatus(200)
 })
-app.post('/github', (req, res, next) => {
-  res.send('github')
-})
-// --------------------------- Start APP 2000---------------------------------------
-// Set Port
-app.listen(process.env.PORT || 8000, function () {
-  console.log('Connected! Well done...')
+
+io.on('connection', function (socket) {
+  // io.emit('connected', 'world')
+  // socket.emit('connected', 'world')
+  console.log('lets work!')
 })
