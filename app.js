@@ -22,7 +22,6 @@ let server = app.listen(process.env.PORT || 8000, function () {
   console.log('Connected! Well done...')
 })
 let io = require('socket.io')(server)
-
 io.on('connection', function (socket) {
   console.log('a user connected')
 })
@@ -40,17 +39,18 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // CSS file
 app.use(express.static(path.join(__dirname, 'public')))
-app.get('/', function (req, res) {
-  res.render('home')
-})
+
 app.use('/', githubAPI)
 
-app.get('/', (req, res) => {
-  res.send('Start page')
+app.get('/', function (req, res) {
+  res.render('/', {})
 })
-app.get('/github', (req, res, next) => {
-  res.send('github')
-})
+// app.get('/', (req, res) => {
+//   res.send('Start page')
+// })
+// app.get('/github', (req, res, next) => {
+//   res.send('github')
+// })
 app.post('/github', (req, res, next) => {
   console.log('request: \n' + req)
   // Take the post data from GIthub
