@@ -15,7 +15,6 @@ const port = process.env.PORT || 8000
 const app = express()
 var client = github.client(dotenv)
 
-
 // --------------------------- Start APP 2000---------------------------------------
 // Set Port
 let server = app.listen(process.env.PORT || 8000, function () {
@@ -42,16 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', githubAPI)
 
-app.get('/', function (req, res) {
-  res.render('/', {})
-})
-// app.get('/', (req, res) => {
-//   res.send('Start page')
-// })
-// app.get('/github', (req, res, next) => {
-//   res.send('github')
-// })
-app.post('/github', (req, res, next) => {
+app.post('/home', (req, res, next) => {
   console.log('request: \n' + req)
   // Take the post data from GIthub
   let postGitHub = JSON.stringify(req.body)
@@ -59,9 +49,9 @@ app.post('/github', (req, res, next) => {
    // Get the header
   let signature = req.headers['x-hub-signature']
 
-  let hmac = crypto.createHmac('sha1', 'jontetomte12')
-  hmac.update(postGitHub)
-  let hasedSecret = 'sha1' + hmac.digest('hex')
+  const hash = crypto.createHmac('sha1', 'Jontetomte12')
+  hash.update(postGitHub)
+  let hasedSecret = 'sha1' + hash.digest('hex')
 
   console.log('A', signature)
   console.log('B', hasedSecret)
@@ -72,8 +62,8 @@ app.post('/github', (req, res, next) => {
   res.sendStatus(200)
 })
 
-io.on('connection', function (socket) {
-  // io.emit('connected', 'world')
-  // socket.emit('connected', 'world')
-  console.log('lets work!')
-})
+// io.on('connection', function (socket) {
+//   // io.emit('connected', 'world')
+//   // socket.emit('connected', 'world')
+//   console.log('lets work!')
+// })
