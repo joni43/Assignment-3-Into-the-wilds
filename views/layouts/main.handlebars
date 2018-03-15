@@ -8,10 +8,13 @@
     <!-- Bootstrap core CSS -->
     <link href="https://bootswatch.com/4/sketchy/bootstrap.min.css" rel="stylesheet">
     <link rel = "stylesheet" href="css/style.css">
+    <link rel = "stylesheet" href="public/css/style.css">
+
 
   </head>
 
   <body>
+
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 
@@ -44,16 +47,17 @@
 
     <h3>Issues</h3>
     {{#if issues }}
-    <div class="row">
-     <div class="col s12 m6">
-       <div class="card blue-grey darken-1">
-         <div class="card-content white-text">
+
         <ul id="issues_ul" >
             {{#each issues}}
                 <!--For each snippet in the array -->
             <li class="card-panel" id={{id}}>
+              <div class="card">
+     <div class="col s12 m6">
+       <div class="card blue-grey darken-1">
+         <div class="card-content white-text">
                 Title:      {{title}}       <br>
-                Body:       {{Body}}   <br>
+                Body:       {{Body}}        <br>
                 Comments:   {{comments}}    <br>
                 URL:        {{issueUrl}}    <br>
                 Created at: {{created_at}}  <br>
@@ -80,5 +84,13 @@
   crossorigin="anonymous"></script>
     <script src = "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src = "js/main.js"></script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io()
+</script>
+
+
+
   </body>
 </html>

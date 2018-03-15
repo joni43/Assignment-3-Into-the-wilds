@@ -1,28 +1,32 @@
 // Express modules
 const express = require('express')
 const exphbs = require('express-handlebars')
-var path = require('path')
-var bodyParser = require('body-parser')
+const path = require('path')
+const bodyParser = require('body-parser')
 
-var githubhook = require('githubhook')
-var github = require('octonode')
-var dotenv = require('dotenv').config()
-var path = require('path')
-var crypto = require('crypto')
-var compare = require('secure-compare')
+// library for nodejs to access the github v3 api.
+const github = require('octonode')
+
+// Token stored in .env file
+const dotenv = require('dotenv').config()
+const client = github.client(dotenv)
+
+var socket = require('socket.io')
+// Secure the application with safety feature.
+const crypto = require('crypto')
+const compare = require('secure-compare')
 
 const port = process.env.PORT || 8000
 const app = express()
-var client = github.client(dotenv)
-
-// --------------------------- Start APP 2000---------------------------------------
-// Set Port
+/*
+-------------------------- Start APP 8000---------------------------------------
+*/
 let server = app.listen(process.env.PORT || 8000, function () {
   console.log('Connected! Well done...')
 })
-let io = require('socket.io')(server)
+var io = socket(server)
 io.on('connection', function (socket) {
-  console.log('a user connected')
+  console.log('a user connected', socket.id)
 })
 // req all js file
 const githubAPI = require('./routes/github')
@@ -36,7 +40,7 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// CSS file
+// static
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', githubAPI)

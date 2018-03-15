@@ -1,8 +1,7 @@
-// require('dotenv/config')
-// console.log(process.env.GITHUBACESSTOKEN)
-require('dotenv').config()
 
+require('dotenv').config()
 require('../routes/github')
+
 const express = require('express')
 const router = express.Router()
 const github = require('octonode')
@@ -20,8 +19,6 @@ router.get('/home', (req, res) => {
       if (err) {
         console.log(err)
       }
-
-      // console.log(body)
       contexOfIssue = {
         issues: body.map(function (issue) {
           console.log(headers)
@@ -37,14 +34,8 @@ router.get('/home', (req, res) => {
         })
       }
 
-      res.render('home',  contexOfIssue )
-      console.log(contexOfIssue)
+      res.render('home', contexOfIssue )
     })
 })
-
-  // your standard jquery code goes here with $ prefix
-  // best used inside a page with inline code, 
-  // or outside the document ready, enter code here
-
 
 module.exports = router
