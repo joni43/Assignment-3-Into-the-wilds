@@ -41,7 +41,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // static
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public', 'img')))
 
 app.use('/', githubAPI)
 
@@ -64,6 +64,7 @@ app.post('/home', (req, res, next) => {
     console.log('Data came from GitHub')
   }
   res.sendStatus(200)
+  io.sockets.emit('post', req.body)
 })
 
 // io.on('connection', function (socket) {

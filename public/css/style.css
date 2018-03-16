@@ -1,3 +1,8 @@
+.issue {
+    display:flex;
+    flex-direction:column;
+}
+
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(192, 91, 45, 0.93);
@@ -12,4 +17,22 @@
 /* Add some padding inside the card container */
 .container {
     padding: 2px 16px;
+}
+
+.wrap {
+    width: 500px;
+    margin: auto;
+    margin-top: 70px;
+}
+.cardIssue {
+    box-shadow: 0 4px 8px 0 rgba (0, 0, 0, 0.6);
+    transition: 0.4s;
+    width: 300px;
+    background: #ECEBEB;
+    text-align: center;
+    font-size: 16 px;
+    font-family: sans-serif;
+    margin: 10px;
+    box-shadow: 0 4px 8px 0 rgba(192, 91, 45, 0.93);
+    transition: 0.3s;
 }

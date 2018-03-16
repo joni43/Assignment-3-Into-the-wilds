@@ -25,7 +25,7 @@ router.get('/home', (req, res) => {
           return {
             id: issue.id,
             title: issue.title,
-            Body: issue.body,
+            text: issue.body,
             comments: issue.comments,
             Url: issue.url,
             created_at: issue.created_at,
