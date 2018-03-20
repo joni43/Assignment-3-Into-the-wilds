@@ -15,13 +15,11 @@ router.get('/', (req, res) => {
 router.get('/home', (req, res) => {
   client.get('https://api.github.com/repos/1dv023/jl224dq-examination-3/issues', {},
     function (err, status, body, headers) {
-      console.log(headers)
       if (err) {
         console.log(err)
       }
       contexOfIssue = {
         issues: body.map(function (issue) {
-          console.log(headers)
           return {
             id: issue.id,
             title: issue.title,
@@ -33,8 +31,7 @@ router.get('/home', (req, res) => {
           }
         })
       }
-
-      res.render('home', contexOfIssue )
+      res.render('home', contexOfIssue)
     })
 })
 
