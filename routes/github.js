@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
   res.render('github')
 })
 
-router.get('/home', (req, res) => {
+
+router.get('/issues', (req, res) => {
   client.get('https://api.github.com/repos/1dv023/jl224dq-examination-3/issues', {},
     function (err, status, body, headers) {
       if (err) {
@@ -31,8 +32,9 @@ router.get('/home', (req, res) => {
           }
         })
       }
-      res.render('home', contexOfIssue)
+      res.render('issues', contexOfIssue)
     })
 })
 
 module.exports = router
+

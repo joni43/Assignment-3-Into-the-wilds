@@ -15,7 +15,7 @@
 }
 
 /* Add some padding inside the card container */
-.container {
+.containe {
     padding: 2px 16px;
     font-family: comic sans-serif;
 }
@@ -25,7 +25,7 @@
     margin: auto;
     margin-top: 70px;
 }
-.cardIssue {
+.issuecard {
     box-shadow: 0 4px 8px 0 rgba (0, 0, 0, 0.6);
     transition: 0.4s;
     width: 300px;
