@@ -1,47 +1,23 @@
-let socket = io.connect('ws://localhost:8000')
+
 document.addEventListener('DOMContentLoaded', function () {
-  selectIssueCard()
-  socket.on('try', (socket) => {
-    console.log('connectes', socket)
-  })
+  let socket = io.connect('ws://localhost:8000')
+  // selectIssueCard()
   socket.on('issue', (data) => {
-    console.log('good', data)
-    selectIssueCard(data)
+    console.log(data)
+  })
+  socket.on('issue comment', (data, issue) => {
+    let text = document.createTextNode(issue),
+    li = document.createElement('li')
+    li.innerHTML = 'Title: ' + data.title + '<br>' +
+    'Body: ' + data.Body + '<br>' +
+    'Comments: ' + data.comments + '<br>' +
+    ' URL: ' + data.Url + '<br>' +
+    'Created at: ' + data.created_at + '<br>' +
+    'Updated at: ' + data.updated_at + '<br>'
+    console.log('test', data)
+    console.log('B', li)
+    console.log('C', data.Body)
+
+    // selectIssueCard(data)
   })
 })
-socket.on('issue', function (data) {
-  // todo, create function (data)
-})
-  // socket.emit('try', {
-  // })
-  // function createElement() {
-  //   var li = document.createElement('li'),
-  //     issueUl = document.getElementById('card')
-  //     console.log('AA', li)
-  //     li.appendChild(issueUl)
-  // }
-function selectIssueCard (issue) {
-  console.log(issue)
-  let ul = document.getElementById('issues_ul')
-  // let li = document.getElementById(issue.id)
-  console.log('A', ul)
-
-  var id = document.getElementById('.issuecard.id')
-  console.log('B', id)
-
-//   ul.innerHTML = 'Title: ' + issue.title + '<br/>' +
-//   'Body: ' + issue.issueBody + '<br/>' +
-//   'Comments: ' + issue.comments + '<br/>' +
-//   ' URL: ' + issue.issueUrl + '<br/>' +
-//   'Created at: ' + issue.created_at + '<br/>' +
-//   'Updated at: ' + issue.updated_at + '<br/>'
-
-// ul.insertBefore(ul.firstElementChild)      //Insert the updated issue on the top of the list
-}
-
-// var test = document.getElementById('text')
-// console.log(test)
-// socket.emit('issue', {
-// test: test.value
-// })
-// console.log(test)

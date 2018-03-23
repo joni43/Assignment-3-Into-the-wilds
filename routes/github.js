@@ -9,7 +9,7 @@ const client = github.client(process.env.GITHUB_TOKEN)
 let contexOfIssue
 
 router.get('/', (req, res) => {
-  res.render('github')
+  res.render('issues')
 })
 
 

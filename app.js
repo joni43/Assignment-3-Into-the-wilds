@@ -53,6 +53,7 @@ app.use('/', githubAPI)
 
 app.post('/issues', function (req, res) {
   let issueEvent = req.headers['x-github-event']
+
   var issueContext = {
     id: req.body.issue.id,
     title: req.body.issue.title,
@@ -65,7 +66,8 @@ app.post('/issues', function (req, res) {
   if (issueEvent === 'issues') {
     io.emit('issue', issueContext)
   } else if (issueEvent === 'issue_comment') {
-    io.emit('issue body', issueContext)
+    console.log('boi')
+    io.emit('issue comment', issueContext)
   }
   // let xGithubEvent = req.headers['x-github-event'];
   // const util = require('util')
