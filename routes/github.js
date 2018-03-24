@@ -22,11 +22,9 @@ router.get('/issues', (req, res) => {
       contexOfIssue = {
         issues: body.map(function (issue) {
           return {
-            id: issue.id,
             title: issue.title,
             text: issue.body,
             comments: issue.comments,
-            Url: issue.url,
             created_at: issue.created_at,
             updated_at: issue.updated_at
           }

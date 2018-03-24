@@ -36,13 +36,12 @@
     {{#if issues }}
             <ul id="issues_ul">
               {{#each issues}}
-                <div class="issuecard" id = {{id}}>
+                <div class="issuecard">
                   <img src="/img/GitHub-Mark.jpg"  alt="GitHub" style="width:10%">
                   <!--For each snippet in the array -->
                     Title: {{title}} <br>
                     Text: {{text}} <br>
                      Comments: {{comments}} <br>
-                      URL: {{issueUrl}} <br>
                        Created at: {{created_at}} <br>
                        Updated at: {{updated_at}} <br>
               </div>

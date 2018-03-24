@@ -67,7 +67,6 @@ app.post('/issues', function (req, res) {
   if (issueEvent === 'issues') {
     io.emit('issue', issueContext)
   } else if (issueEvent === 'issue_comment') {
-    console.log('boi')
     io.emit('issue comment', issueContext)
   }
   // let xGithubEvent = req.headers['x-github-event'];
