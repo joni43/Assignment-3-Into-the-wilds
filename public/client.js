@@ -6,18 +6,20 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(data)
   })
   socket.on('issue comment', (data, issue) => {
-    let text = document.createTextNode(issue),
-    li = document.createElement('li')
-    li.innerHTML = 'Title: ' + data.title + '<br>' +
-    'Body: ' + data.Body + '<br>' +
-    'Comments: ' + data.comments + '<br>' +
-    ' URL: ' + data.Url + '<br>' +
-    'Created at: ' + data.created_at + '<br>' +
-    'Updated at: ' + data.updated_at + '<br>'
+    let issueBody = document.createTextNode('Title:' + data.title + '\u000a' +
+    'Body: ' + data.Body + '\u000a' +
+    'Comments: ' + data.comments + '\u000a' +
+    ' URL: ' + data.Url + '\u000a' +
+    'Created at: ' + data.created_at + '\u000a' +
+    'Updated at: ' + data.updated_at)
+    let li = document.createElement('li')
+    console.log('AAA', li)
+
+    li.appendChild(issueBody)
+    document.body.appendChild(li)
     console.log('test', data)
     console.log('B', li)
-    console.log('C', data.Body)
-
-    // selectIssueCard(data)
   })
 })
+function bodyIssue (data, issue) {
+}
