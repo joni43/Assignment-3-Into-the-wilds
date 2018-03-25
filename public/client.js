@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
   socket.on('issue', (data) => {
     let ul = document.getElementById('issues_ul')
     let li = document.createElement('li')
+    var img = document.getElementById('git')
     let issueBody = document.createTextNode(
     'Title:' + data.title + '\u000a' +
     'Text: ' + data.Body + '\u000a' +
@@ -14,13 +15,14 @@ document.addEventListener('DOMContentLoaded', function () {
   )
     li.appendChild(issueBody)
     li.setAttribute('class', 'issuecard')
+    li.setAttribute('src', '/img/GitHub-Mark.jpg')
     ul.appendChild(li)
     ul.insertBefore(li, ul.firstElementChild)
-    window.location.reload()
+
   })
   socket.on('issue comment', (data, issue) => {
     window.location.reload()
   })
-
-
 })
+
+

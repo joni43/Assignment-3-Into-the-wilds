@@ -5,28 +5,23 @@ const exphbs = require('express-handlebars')
 const path = require('path')
 const bodyParser = require('body-parser')
 const app = express()
-require('dotenv').config()
-var GithubWebHook = require('express-github-webhook')
-var webhookHandler = GithubWebHook({ path: '/webhook', secret: 'Jontetomte12' })
 
 // library for nodejs to access the github v3 api.
 const github = require('octonode')
-var socket = require('socket.io')
-const client = github.client(process.env.GITHUB_TOKEN)
-// Token stored in .env file
-const dotenv = require('dotenv').config()
+const socket = require('socket.io')
+// password stored in .env file
+const password = github.client(process.env.GITHUB_PASSWORD)
 
 // Secure the application with safety feature.
 const crypto = require('crypto')
 const compare = require('secure-compare')
-
+var http = require('http')
 const port = process.env.PORT || 8000
-let issues
 /*
 -------------------------- Start APP 8000---------------------------------------
 */
-let server = app.listen(port, function () {
-  console.log('Connected! Well done...')
+let server = http.createServer(app).listen(port, function () {
+  console.log('Connected to https://localhost:' + port)
 })
 var io = socket(server)
 
@@ -54,7 +49,6 @@ app.use('/', githubAPI)
 
 app.post('/issues', function (req, res) {
   let issueEvent = req.headers['x-github-event']
-
   var issueContext = {
     id: req.body.issue.id,
     title: req.body.issue.title,
@@ -69,24 +63,12 @@ app.post('/issues', function (req, res) {
   } else if (issueEvent === 'issue_comment') {
     io.emit('issue comment', issueContext)
   }
-  // let xGithubEvent = req.headers['x-github-event'];
-  // const util = require('util')
 
-  // console.log(`post/${util.inspect(xGithubEvent,false,null)}`);
-
-  //     //triggering off the client to update on receiving from Github
-  //     //Check whether the changed is a comment or an issue
-  //     if(xGithubEvent === 'issues') {
-  //         io.emit('issue webhook', notification + '\n' + req.body);
-  //     } else if (xGithubEvent === 'issue_comment') {
-  //         io.emit('comment webhook', notification);
-  //     }
-  // Take the post data from GIthub
   let postGitHub = JSON.stringify(req.body)
    // Get the header
   let signature = req.headers['x-hub-signature']
   console.log(signature)
-  const hash = crypto.createHmac('sha1', 'Jontetomte12')
+  const hash = crypto.createHmac('sha1', 'GITHUB_PASSWORD')
   hash.update(postGitHub)
   let hashedSecret = 'sha1' + hash.digest('hex')
   if (compare(signature, hashedSecret)) {
