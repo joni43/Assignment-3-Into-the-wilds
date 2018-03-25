@@ -1,5 +1,4 @@
 // Express modules
-
 const express = require('express')
 const exphbs = require('express-handlebars')
 const path = require('path')
@@ -23,6 +22,7 @@ const port = process.env.PORT || 8000
 let server = http.createServer(app).listen(port, function () {
   console.log('Connected to https://localhost:' + port)
 })
+
 var io = socket(server)
 
 io.on('connection', function (socket) {
