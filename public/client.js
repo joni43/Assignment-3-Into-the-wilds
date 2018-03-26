@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
   )
     li.appendChild(issueBody)
     li.setAttribute('class', 'issuecard')
-    li.setAttribute('src', '/img/GitHub-Mark.jpg')
     ul.appendChild(li)
     ul.insertBefore(li, ul.firstElementChild)
+    ul.setAttribute('src', '/img/GitHub-Mark.jpg')
 
   })
   socket.on('issue comment', (data, issue) => {
