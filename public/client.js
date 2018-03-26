@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-  let socket = io.connect('https://139.59.166.193/issues')
-  // selectIssueCard()
+  let socket = io.connect('https://139.59.166.193')
+
   socket.on('issue', (data) => {
     let ul = document.getElementById('issues_ul')
     let li = document.createElement('li')

@@ -10,6 +10,7 @@ As a complement to your code you should provide a assignment report. You do this
 
 In my code: 
 Im using Crypto which is built in module in node.js. The module provides an cryptographic functionality called HMAC. Which i create for my secret password.
+One aspect of MAC is that it is impossible to produce a secret key without knowing the secret key, which i called GITHUB_PASSWORD. The idea is to hash a message and key together which makes it almost impossible to find out the key.
 HMAC - BESKRIV LITE VAD HMAC ÄR OCH VAD DET GÖR.
 
 
