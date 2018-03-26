@@ -68,9 +68,9 @@ app.post('/issues', function (req, res) {
    // Get the header
   let signature = req.headers['x-hub-signature']
   console.log(signature)
-  const hash = crypto.createHmac('sha1', 'GITHUB_PASSWORD')
+  const hash = crypto.createHmac('sha256', 'GITHUB_PASSWORD')
   hash.update(postGitHub)
-  let hashedSecret = 'sha1' + hash.digest('hex')
+  let hashedSecret = 'sha256' + hash.digest('hex')
   if (compare(signature, hashedSecret)) {
     console.log('Data came from GitHub')
   }
