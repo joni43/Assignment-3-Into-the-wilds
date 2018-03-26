@@ -1,6 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-  let socket = io.connect('ws://localhost:8000')
+  let socket = io.connect('https://139.59.166.193')
   // selectIssueCard()
   socket.on('issue', (data) => {
     let ul = document.getElementById('issues_ul')

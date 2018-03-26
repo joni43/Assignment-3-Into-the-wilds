@@ -27,7 +27,7 @@
     "github-webhook-middleware": "0.0.2",
     "jquery": "^3.3.1",
     "node": "^9.8.0",
-    "npm": "^5.7.1",
+    "npm": "^5.8.0",
     "octonode": "^0.9.2",
     "path": "^0.12.7",
     "secure-compare": "^3.0.1",
