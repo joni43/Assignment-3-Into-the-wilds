@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
     ul.appendChild(li)
     ul.insertBefore(li, ul.firstElementChild)
     ul.setAttribute('src', '/img/GitHub-Mark.jpg')
-
   })
   socket.on('issue comment', (data, issue) => {
     window.location.reload()
