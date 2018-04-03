@@ -25,14 +25,6 @@ let server = http.createServer(app).listen(port, function () {
 
 var io = socket(server)
 
-io.on('connection', function (socket) {
-  console.log('a user connected', socket.id)
-  socket.emit('try', 'hej på dig'
-)
-})
-io.on('connection', function (socket) {
-  socket.emit('bye, goodbye world!')
-})
 // req all js file
 const githubAPI = require('./routes/github')
 // view engine
