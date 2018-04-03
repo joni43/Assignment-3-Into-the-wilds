@@ -17,7 +17,7 @@ It is used to validate the integrity of a message. It hashes the message but als
 
 Describe the following parts, how you are using them and what their purpose is
 
-											Reversed proxy
+Reversed proxy
 A proxy server acts as a middle computer that exists between users computer and a host computer.It can be used to log traffic and block access to the website. Also used as speed up normal internet usages as users don't need to retrieve all information from the internet without information stored on the proxy server.
 
 Client connect to accepts web traffic requests from a client in the local network and then proxies them to servers on the internet.
@@ -30,18 +30,18 @@ You can use a reverse proxy for many reasons as Load balancing, Web acceleration
 
 
 
-										Process manager
+Process manager
  Imagine restarting the app every time something happens, or if the application crashes without you even knowing it.I'm using PM2 as a process manager for nodeJS application to handle this, it allowing me to keep applications alive forever,
  reloading applications without downtime and facilitating common system admin tasks
  .It manages my application states, so I can start, stop, restart and delete processes. Greatness with Pm2 is it offers many features. If my application crash, it will restart and keep a log of unhandled exceptions.
 
 
-										TLS certificates
+TLS certificates
 SSL / TLS is a technique used to encrypt traffic between the web server and the client browser. It is used when sensitive data is sent between the site and the client. It is common to encrypt the connection at checkout in an online store when the user sends personal information. With an encrypted connection, no third party can spy on the one sent. It has become increasingly popular to encrypt all traffic sent between the visitor's computer and the web server, not just that which is extra sensitive. You can see if the connection is encrypted if HTTPS instead of just HTTP then the connection is encrypted
 SSL encryption takes the load off my web server and boosting the performance
 
 
-										Environment variables
+Environment variables
 
 I have a dotEnv file where I store my password and secret, which makes the dotENV not visible in my repo in Github. Environment variables are so that secret information stays secret. .  
 
@@ -55,5 +55,5 @@ I have tno use any extra modules, not more than what is needed and necessary for
 
 Have you implemented any extra features (see below)? If so, describe them.
 
-													No
+No
 If you are aiming for a higher grade here is also the chance to motivate it
