@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.location.reload()
   })
   socket.on('closed', (data) => {
-    var el = document.getElementById('issuecard')
+    var el = document.getElementById('issues_ul')
     el.remove()
   })
 })
