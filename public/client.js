@@ -22,4 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
   socket.on('issue comment', (data, issue) => {
     window.location.reload()
   })
+  socket.on('closed', (data) => {
+    var el = document.getElementById('issuecard')
+    el.remove()
+  })
 })

@@ -55,6 +55,9 @@ app.post('/issues', function (req, res) {
   } else if (issueEvent === 'issue_comment') {
     io.emit('issue comment', issueContext)
   }
+  if (issueEvent === 'closed') {
+    io.emit('closed')
+  }
 
   let postGitHub = JSON.stringify(req.body)
    // Get the header
