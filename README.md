@@ -14,6 +14,8 @@ Adress: https://139.59.166.193/issues
 I'm using Crypto which is built in module in node.js. The module provides a cryptographic functionality called HMAC.
 It is used to validate the integrity of a message. It hashes the message but also has a secret which is also hashed. So the secret is like a second validation.
 
+I also avoiding to write, innerHTML for my js code due innerHTML normally causes an XSS vulnerability. For this im instead using createElement instead.
+
 
 ## Describe the following parts, how you are using them and what their purpose is
 
