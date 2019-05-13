@@ -5,10 +5,7 @@
 ## What is the address to your application?
 Adress: https://139.59.166.193/issues
 
-
-
 ## Describe what you have done to make your application secure, both in code and when configuring your application server
-
 
 
 I'm using Crypto which is built in module in node.js. The module provides a cryptographic functionality called HMAC.
